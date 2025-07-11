@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEO Business AI | Plan Generator</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="particles-container" id="particles-js"></div>
+  
+  <div class="app-container">
+    <!-- Floating Neon Circle -->
+    <div class="neon-circle-1"></div>
+    <div class="neon-circle-2"></div>
+    
+    <header class="app-header animate__animated animate__fadeInDown">
+      <div class="logo">
+        <i class="fas fa-brain"></i>
+        <span>NEO<span class="gradient-text">AI</span>PLAN</span>
+      </div>
+      <div class="tagline">Next-Gen Business Intelligence</div>
+    </header>
+
+    <main class="app-main">
+      <!-- Input Section -->
+      <section class="input-section animate__animated animate__fadeIn animate__delay-1s">
+        <div class="section-header">
+          <h2><span class="gradient-text">01.</span> Business Profile</h2>
+          <div class="pulse-dot"></div>
+        </div>
+        
+        <form id="businessForm" class="neon-form">
+          <div class="form-group floating-input">
+            <input type="text" id="businessType" name="businessType" required>
+            <label for="businessType"><i class="fas fa-chess-queen"></i> Business Type</label>
+            <div class="underline"></div>
+          </div>
+
+          <div class="form-group floating-input">
+            <textarea id="businessDescription" name="businessDescription" required></textarea>
+            <label for="businessDescription"><i class="fas fa-align-left"></i> Description</label>
+            <div class="underline"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group floating-input">
+              <input type="text" id="targetMarket" name="targetMarket">
+              <label for="targetMarket"><i class="fas fa-users"></i> Target Market</label>
+              <div class="underline"></div>
+            </div>
+
+            <div class="form-group floating-input">
+              <input type="text" id="competitors" name="competitors">
+              <label for="competitors"><i class="fas fa-chess-knight"></i> Competitors</label>
+              <div class="underline"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="analysis-options">
+              <div class="option-title"><i class="fas fa-chart-network"></i> Analysis Type</div>
+              <div class="option-grid">
+                <label class="option-card">
+                  <input type="radio" name="analysisType" value="swot" checked>
+                  <div class="card-content">
+                    <div class="card-icon">
+                      <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>SWOT</h3>
+                    <p>Strategic Analysis</p>
+                    <div class="hover-light"></div>
+                  </div>
+                </label>
+                
+                <label class="option-card">
+                  <input type="radio" name="analysisType" value="strategy">
+                  <div class="card-content">
+                    <div class="card-icon">
+                      <i class="fas fa-chess"></i>
+                    </div>
+                    <h3>Strategy</h3>
+                    <p>Action Plan</p>
+                    <div class="hover-light"></div>
+                  </div>
+                </label>
+                
+                <label class="option-card">
+                  <input type="radio" name="analysisType" value="financial">
+                  <div class="card-content">
+                    <div class="card-icon">
+                      <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Financial</h3>
+                    <p>Projections</p>
+                    <div class="hover-light"></div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Generate Plan</span>
+            <span class="btn-icon">
+              <i class="fas fa-bolt"></i>
+            </span>
+            <span class="btn-pulse"></span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Results Section -->
+      <section id="results" class="results-section animate__animated animate__fadeIn">
+        <div class="section-header">
+          <h2><span class="gradient-text">02.</span> AI Analysis</h2>
+          <div class="pulse-dot"></div>
+        </div>
+        
+        <div class="results-container">
+          <div id="analysisResult" class="analysis-result"></div>
+          
+          <div class="visualization-area">
+            <div class="chart-container" id="swotChartContainer">
+              <canvas id="swotChart"></canvas>
+            </div>
+            <div class="chart-container" id="financialChartContainer">
+              <canvas id="financialChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Next-Level Loading Animation -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+      <div class="holographic-loader">
+        <div class="holo-circle holo-1"></div>
+        <div class="holo-circle holo-2"></div>
+        <div class="holo-circle holo-3"></div>
+        <div class="holo-core">
+          <div class="core-pulse"></div>
+          <i class="fas fa-atom"></i>
+        </div>
+      </div>
+      <div class="loading-progress">
+        <div class="progress-bar"></div>
+        <div class="progress-text">Initializing AI Matrix...</div>
+      </div>
+      <div class="loading-message animate__animated animate__fadeIn animate__infinite animate__slower">
+        <span class="message-text">"The best way to predict the future is to create it."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>
